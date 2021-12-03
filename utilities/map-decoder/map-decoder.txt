@@ -1,0 +1,70 @@
+removelist tomes
+createlist tomes
+
+// Set tome serials
+// Add as little or as many
+// different types of map
+// tomes here as you want
+// use >info in game to find
+// the serial, and add it
+// below like the two examples
+
+// Tmap
+//pushlist tomes '0x4224D355'
+// Fishing
+//pushlist tomes '0x4017B523'
+// Skinning
+pushlist tomes '0x470CD603'
+// Lumber
+pushlist tomes '0x470CD87C'
+// Ore
+pushlist tomes '0x470CD6FE'
+
+removelist buttons
+createlist buttons
+
+//Set buttons
+pushlist buttons '10'
+pushlist buttons '11'
+pushlist buttons '12'
+pushlist buttons '13'
+pushlist buttons '14'
+pushlist buttons '15'
+pushlist buttons '16'
+pushlist buttons '17'
+pushlist buttons '18'
+
+foreach tome in tomes
+  dclick tome
+  pause 750
+  foreach button in buttons
+    gumpresponse button
+    pause 1000
+    while findtype 5356 backpack
+      if findtype 5356 backpack
+        while not insysmsg 'maximum'
+            if not findtype 5365
+                overhead 'NO MORE SPYGLASSES'
+                stop
+            else
+                dclicktype 5365 backpack
+                pause 1000
+                targettype 5356 backpack
+                pause 1000
+                gumpresponse 4
+                pause 1000
+            endif
+        endwhile
+        lifttype 5356 'any' backpack
+        pause 500
+        drop tome 0 0 0
+        pause 1000
+      endif
+      dclick tome
+      pause 500
+      gumpresponse button
+      pause 1500
+    endwhile
+  endfor
+  gumpclose
+endfor

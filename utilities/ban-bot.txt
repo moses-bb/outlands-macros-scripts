@@ -1,0 +1,13 @@
+skill 'detectinghidden'
+waitfortarget
+target 'self'
+for 21
+    hotkey "Next Non-Friendly Humanoid Target"
+    if insysmsg 'New target set.'
+        say 'I ban thee'
+        waitfortarget 
+        lasttarget 
+    endif
+    pause 500
+endfor
+loop

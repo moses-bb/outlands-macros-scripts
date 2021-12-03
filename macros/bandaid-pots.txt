@@ -1,0 +1,16 @@
+!Loop
+Assistant.Macros.IfAction|0|2|{maxhp}
+Assistant.Macros.HotKeyAction|1025|
+Assistant.Macros.ForAction|10
+Assistant.Macros.PauseAction|00:00:01.0500000
+Assistant.Macros.IfAction|3|-1|0
+Assistant.Macros.HotKeyAction|1029|
+Assistant.Macros.EndIfAction
+Assistant.Macros.IfAction|0|2|60
+Assistant.Macros.HotKeyAction|1028|
+Assistant.Macros.EndIfAction
+Assistant.Macros.IfAction|4|0|i cannot move!"
+Assistant.Macros.SpeechAction|0|690|3|ENU|0|[pouch
+Assistant.Macros.EndIfAction
+Assistant.Macros.EndForAction
+Assistant.Macros.EndIfAction

@@ -1,0 +1,70 @@
+//BEFORE YOU BEGIN
+//---------------------------------
+//Create a variable named 'Shelf'
+//  under the Options tab.
+//- - - - - - - - - - - - - - - - -
+//Configure Organizer-2 for potions 
+//  and select your trash barrel to
+//  throw away all lesser and 
+//  regular poison.
+//----------------------------------
+clearsysmsg
+overhead "Target storage shelf"
+setvar 'Shelf'
+
+while skill 'Alchemy' < 120
+    //Resupply from shelf
+    menu "Shelf" 1
+    pause 1500
+    while count 'nightshade' > 10
+        //use Mortar and Pestle
+            usetype 3739
+            waitforgump 
+            pause 500
+        //Select Poison sub-menu
+            gumpresponse 106
+            waitforgump
+            pause 500
+        if skill 'Alchemy' < 55
+            //Lesser Poison
+            gumpresponse 300
+        elseif skill 'Alchemy' < 75
+            //Poison
+            gumpresponse 301
+        elseif skill 'Alchemy' < 95
+            //Greater Poison
+            gumpresponse 302
+        elseif skill 'Alchemy' < 110
+            //Deadly Poison
+            gumpresponse 303
+        elseif skill 'Alchemy' < 120
+            //Lethal Poison
+            gumpresponse 304
+        elseif skill 'Alchemy' == 120
+            stop
+        endif
+            pause 500
+            waitforgump
+            pause 500
+            //Make Item
+            gumpresponse 16
+            waitforgump
+            pause 500
+            waitforgump 
+            pause 2000
+            gumpclose
+    endwhile
+    //Restock to shelf
+    menu 'Shelf' 0
+    waitfortarget
+    target 'self'
+    pause 1500
+    //Move Lesser/Regular Poison
+    clearsysmsg 
+    organizer 2
+    if  insysmsg 'queued 1'
+        pause 1400
+    endif
+    pause 1400
+    clearsysmsg
+endwhile

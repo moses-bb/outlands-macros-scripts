@@ -1,0 +1,10 @@
+if @findtype 0xf6c 'any' 'ground' 1 2
+  sysmsg 'Moongate found, lets go!' 80
+  usetype 0xf6c 'any' 'ground'
+  waitforgump 0xe0e675b8 15000
+  replygump 0xe0e675b8 11
+  waitforgump 0xe0e675b8 15000
+  replygump 0xe0e675b8 2
+else
+  sysmsg 'Moongate not found, come closer.' 24
+endif

@@ -1,0 +1,32 @@
+//create a variable under options
+//  called 'scrollChest'
+overhead 'Select your resource chest' 37
+setvar 'scrollChest'
+clearsysmsg 
+while not insysmsg 'You have completed a society job'
+    clearsysmsg 
+    //add the materials for WizHats to
+    //  restock agent 5
+    restock 5
+    waitfortarget 
+    target 'scrollChest'
+    pause 3250
+    //Use scribe pen
+    usetype 4032
+    waitforgump
+    gumpresponse 101
+    waitforgump 
+    gumpresponse 200
+    waitforgump 
+    waitforgump 
+    gumpclose
+    //if a wizard hat exists -- cut
+    if findtype 5912 1 1 1
+        overhead 'Hat Found' 5
+        usetype 3999
+        waitfortarget 1250
+        targettype 5912
+        pause 350
+        gumpclose 
+    endif
+endwhile

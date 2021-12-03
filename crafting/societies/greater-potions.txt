@@ -1,0 +1,152 @@
+//create a variable under options
+// named 'Shelf'
+overhead 'Target your storage shelf'
+setvar 'Shelf'
+//Adjust the values after each for
+//  statement to the required amt
+//  for each society.
+//Greater Heal
+for 0
+    menu 'Shelf' 1
+    usetype 3739
+    waitforgump 949095101
+    gumpresponse 100
+    waitforgump 949095101
+    gumpresponse 202
+    waitforgump 949095101
+    waitforgump 949095101
+    pause 2000
+    gumpclose
+    menu 'Shelf' 0
+    waitfortarget
+    target 'self'
+endfor
+//Greater Cure
+for 0
+    menu 'Shelf' 1
+    usetype 3739
+    waitforgump 949095101
+    gumpresponse 101
+    waitforgump 949095101
+    gumpresponse 202
+    waitforgump 949095101
+    waitforgump 949095101
+    pause 2000
+    gumpclose
+    menu 'Shelf' 0
+    waitfortarget
+    target 'self'
+endfor
+//Total Refresh
+for 0
+    menu 'Shelf' 1
+    usetype 3739
+    waitforgump 949095101
+    gumpresponse 102
+    waitforgump 949095101
+    gumpresponse 201
+    waitforgump 949095101
+    waitforgump 949095101
+    pause 2000
+    gumpclose
+    menu 'Shelf' 0
+    waitfortarget
+    target 'self'
+endfor
+//Greater Strength 
+for 0
+    menu 'Shelf' 1
+    usetype 3739
+    waitforgump 949095101
+    gumpresponse 103
+    waitforgump 949095101
+    gumpresponse 201
+    waitforgump 949095101
+    waitforgump 949095101
+    pause 2000
+    gumpclose
+    menu 'Shelf' 0
+    waitfortarget
+    target 'self'
+endfor
+//Greater Agility
+for 0
+    menu 'Shelf' 1
+    usetype 3739
+    waitforgump 949095101
+    gumpresponse 104
+    waitforgump 949095101
+    gumpresponse 201
+    waitforgump 949095101
+    waitforgump 949095101
+    pause 2000
+    gumpclose
+    menu 'Shelf' 0
+    waitfortarget
+    target 'self'
+endfor
+//Greater Magic Resist
+for 0
+    menu 'Shelf' 1
+    usetype 3739
+    waitforgump 949095101
+    gumpresponse 105
+    waitforgump 949095101
+    gumpresponse 202
+    waitforgump 949095101
+    waitforgump 949095101
+    pause 2000
+    gumpclose
+    menu 'Shelf' 0
+    waitfortarget
+    target 'self'
+endfor
+//Greater Explosion
+for 0
+    menu 'Shelf' 1
+    usetype 3739
+    waitforgump 949095101
+    gumpresponse 107
+    waitforgump 949095101
+    gumpresponse 202
+    waitforgump 949095101
+    waitforgump 949095101
+    pause 1250
+    gumpclose
+    menu 'Shelf' 0
+    waitfortarget
+    target 'self'
+    pause 500
+endfor
+//Greater Poison
+for 0
+    menu 'Shelf' 1
+    usetype 3739
+    waitforgump 949095101
+    gumpresponse 106
+    waitforgump 949095101
+    gumpresponse 202
+    waitforgump 949095101
+    waitforgump 949095101
+    pause 2000
+    gumpclose
+    menu 'Shelf' 0
+    waitfortarget
+    target 'self'
+endfor
+//Deadly Poison
+for 0
+    menu 'Shelf' 1
+    usetype 3739
+    waitforgump 949095101
+    gumpresponse 106
+    waitforgump 949095101
+    gumpresponse 203
+    waitforgump 949095101
+    waitforgump 949095101
+    pause 2000
+    gumpclose
+    menu 'Shelf' 0
+    waitfortarget
+    target 'self'
+endfor

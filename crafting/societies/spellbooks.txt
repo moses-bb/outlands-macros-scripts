@@ -1,0 +1,38 @@
+//create a variable under options
+//  called 'scrollChest'
+overhead 'Select your resource chest' 37
+setvar 'scrollChest'
+clearsysmsg 
+while not insysmsg 'You have completed a society job'
+    clearsysmsg 
+    //add the materials for spellbooks to
+    //  restock agent 4
+    restock 4
+    waitfortarget 
+    target 'scrollChest'
+    while not insysmsg 'Restock done,'
+        pause 100
+    endwhile
+    //Use scribe pen
+    usetype 4032
+    waitforgump
+    clearsysmsg 
+    //first menu 
+    gumpresponse 100
+    pause 350
+    //item
+    gumpresponse 200
+    pause 2250
+    gumpclose 
+    //recycle spellbooks
+    if findtype 3834 1 1 1
+        overhead 'Book Found' 5
+        usetype 4032
+        waitforgump 
+        gumpresponse 3
+        waitfortarget
+        targettype 3834
+        pause 350
+        gumpclose 
+    endif
+endwhile

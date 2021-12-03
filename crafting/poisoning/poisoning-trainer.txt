@@ -1,0 +1,37 @@
+//Create a script variable called 'Shelf'
+overhead 'Target a storage shelf'
+setvar Shelf
+while skill Poisoning < 55
+    //use poison keg
+    usetype 6464
+    skill 'poisoning'
+    waitfortarget
+    //poison
+    targettype 3850
+    waitfortarget
+    //food
+    targettype [food]
+    pause 10500
+endwhile
+while skill Poisoning < 120
+    //resupply
+    menu Shelf 1
+    pause 350
+    if findtype 3850
+        skill 'poisoning'
+        pause 350
+        waitfortarget 2500
+        targettype 3850
+        waitfortarget 2500
+        targettype [food]
+        pause 2500
+        while poisoned
+            potion 'cure'
+            pause 1000
+        endwhile
+    pause 8000
+    endif
+    menu Shelf 0
+    waitfortarget 2500
+    target self
+endwhile

@@ -1,0 +1,18 @@
+## Escape Script by HappyX ##
+# Will cast recall on default rune in a runetome and use the 
+# first rune slot for a recall scroll if you have less than 
+# 60 magery
+
+if skill 'magery' > 60
+    if findtype 29103 backpack as tome
+        cast recall
+        waitfortarget 
+        target tome
+    endif
+else
+    if findtype 29103 backpack as tome
+        dclick tome
+        waitforgump 167090027
+        gumpresponse 100
+    endif
+endif

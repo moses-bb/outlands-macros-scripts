@@ -1,0 +1,23 @@
+## Gate Hop by HappyX ##
+# Will hop you thru dungon and player gates within 2 tiles
+# will also open a chiv gate within 2 tiles
+
+gumpclose 3899019871
+gumpclose 3773199800
+if findtype 3948 true as gate
+    dclick gate
+    waitforgump
+    wait 150
+        if gumpexists 3773199800
+            gumpresponse 2
+            stop
+        endif  
+        wait 750  
+        if gumpexists 3899019871
+            gumpresponse 2
+        endif    
+elseif findtype 30528 true as gate
+    dclick gate
+else
+    overhead 'No Gate' 32
+endif

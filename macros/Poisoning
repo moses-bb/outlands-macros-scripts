@@ -1,0 +1,82 @@
+## 55-120 Poison Script by Happyx ##
+
+#   You need at least 55 poisoning to run this script for shelf restocks
+#       55 - 80 greater
+#       80 - 100 deadly
+#       100 - 120 leathal
+#   Set shelf to restock 10 poison pots for your required skill 
+#   as well as 10 greater cure and 1 greater heal pot.
+
+
+if not find 'shelf' ground any any 2
+    if findtype 'storage shelf' ground any any 2 as item
+        setvar 'shelf' 'item'
+    else
+        overhead 'Need to be near your shelf!' 43
+        stop
+    endif
+endif
+
+# Select target weapon and bag to dump empty bottles in
+if not find 'weap'
+    overhead 'Select target weapon' 43
+    @setvar 'weap'
+endif
+if not find 'dump'
+    overhead 'Select dump bag' 43
+    @setvar 'dump'
+endif
+
+clearlist bottles
+createlist bottles
+pushlist bottles 3854
+
+while skill 'poisoning' < 120
+# Restock
+menu shelf 1
+wait 500
+
+# Skilling
+for 10
+    skill 'Poisoning'
+    waitfortarget 500
+    targettype '3850'
+    waitfortarget 500
+    target 'weap'
+    wait 4500
+    if poisoned
+        while poisoned
+            dclicktype '3847'
+            wait 1000
+        endwhile
+    endif
+    if hits < 80
+        if hits < 30
+        hotkey 'Drink Heal'
+        endif
+        if magery > 50
+            while hits < maxhits
+                hotkey 'Greater Heal'
+                waitfortarget
+                hotkey 'Target Self'
+                wait 500
+            endwhile
+        elseif healing > 50
+            while hits < maxhits
+                hotkey 'Bandage Self'
+                wait 10500
+            endwhile
+        endif
+    endif
+endfor
+wait 1000
+
+foreach bottle in bottles
+    while findtype bottle backpack as item
+        lift item 50
+        drop 'dump' -1 -1 -1
+        wait 500
+    endwhile
+endfor
+
+endwhile

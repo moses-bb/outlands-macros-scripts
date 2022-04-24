@@ -1,0 +1,86 @@
+######################################
+#### Necromancy Trainer by HappyX ####
+######################################
+
+# Script will 120 necro with air elementals. it can also take magery from 80 to gm.
+# if you dont have a fast cast air ele you will need to adjust delay on line 80 to 6750.
+# auto restock from self.
+
+removelist regs
+createlist regs
+pushlist regs 3963
+pushlist regs 3980
+pushlist regs 3974
+pushlist regs 3973
+pushlist regs 3981
+pushlist regs 3962
+pushlist regs 3976
+pushlist regs 3972
+
+if not find 'shelf' ground any any 2
+    if findtype 'storage shelf' ground any any 2 as 'found'
+        overhead 'Found the shelf!'
+        setvar 'shelf' 'found'
+    elseif not findtype 'storage shelf' ground any any 2
+        overhead "Move closer to shelf" 63
+        stop
+    endif
+endif
+
+if not timerexists food
+    createtimer food
+    settimer food 7500000
+endif
+if not timerexists taste
+    createtimer taste
+    settimer taste 12000
+endif
+
+
+
+while skill 'necromancy' < 120
+    clearsysmsg
+if skill 'tasteidentification >= 50
+  if timer taste > 12000
+     skill 'tasteidentification'
+      waitfortarget 1000
+      target backpack
+      wait 500
+      settimer taste 0
+  endif
+endif
+
+if timer food > 7200000
+    if findtype 'tray' backpack as foods
+        dclick foods
+        wait 500
+        settimer food 0
+    else 
+        break
+    endif
+endif
+
+foreach reg in regs
+    if counttype 'reg' backpack < 9
+        menu shelf 1
+        wait 200
+    endif
+endfor
+
+if mana < 50
+    while not insysmsg 'enter a meditative'
+        useskill 'meditation'
+        pause 12000
+    endwhile
+    while mana < maxmana
+    endwhile
+endif
+
+    cast 'air elemental'
+    wait 2750
+        if findtype '13' ground any any 2
+            say "an air elemental release"
+            wait 500
+        endif
+
+endwhile
